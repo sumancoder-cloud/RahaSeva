@@ -1,6 +1,6 @@
 <!-- prettier-ignore-start -->
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:22c55e,100:0ea5e9&height=140&section=header&text=RahaSeva%20-%20HelpHive&fontSize=42&fontAlignY=30&fontColor=ffffff&animation=fadeIn" alt="RahaSeva Banner" />
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:22c55e,100:0ea5e9&height=140&section=header&text=RahaSeva&fontSize=42&fontAlignY=30&fontColor=ffffff&animation=fadeIn" alt="RahaSeva Banner" />
 </p>
 
 <p align="center">
