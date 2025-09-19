@@ -159,17 +159,6 @@ RahaSeva/
   <img src="https://github.com/ikatyang/emoji-cheat-sheet/raw/master/public/graphics/emojis/sparkles.png" width="28" alt="sparkles" />
 </p>
 
-<table>
-  <tr>
-    <td align="center">
-      <img src="https://placehold.co/1200x720/0ea5e9/ffffff?text=Homepage" alt="Homepage" />
-      <br />
-      <sub>Homepage</sub>
-    </td>
-  </tr>
-</table>
-
-> Tip: Add your screenshots under `docs/images/` or `HelpHive/RahSeva/public/` and update the links above.
 
 ## Contributing
 - **Issues & Feature Requests**: Use GitHub Issues.
