@@ -153,11 +153,7 @@ RahaSeva/
 
 > Explore `HelpHive/RahSeva/server/routes/*` and `controllers/*` for details.
 
-## Screenshots
-<p align="center">
-  <!-- Replace with your images and captions -->
-  <img src="https://github.com/ikatyang/emoji-cheat-sheet/raw/master/public/graphics/emojis/sparkles.png" width="28" alt="sparkles" />
-</p>
+
 
 
 ## Contributing
