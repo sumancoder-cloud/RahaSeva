@@ -1,0 +1,314 @@
+/* Direct styles that will definitely work */
+
+/* Reset everything */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background: white;
+}
+
+/* Force the button styles to work */
+.nav-buttons button {
+  padding: 12px 24px !important;
+  border: 2px solid white !important;
+  border-radius: 50px !important;
+  background: transparent !important;
+  color: white !important;
+  font-weight: bold !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  font-size: 14px !important;
+}
+
+/* Green hover for first button */
+.nav-buttons button:first-child:hover {
+  background: #22c55e !important;
+  color: white !important;
+  border-color: #22c55e !important;
+}
+
+/* Red hover for second button */
+.nav-buttons button:last-child:hover {
+  background: #ef4444 !important;
+  color: white !important;
+  border-color: #ef4444 !important;
+}
+
+/* Basic layout styles */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 70px;
+  background: linear-gradient(to right, #f97316, #ec4899);
+  border: 2px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  z-index: 1000;
+}
+
+.logo-section {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo-img {
+  width: 64px;
+  border-radius: 50%;
+}
+
+.logo-text {
+  font-size: 20px;
+  font-weight: 600;
+  color: white;
+}
+
+.desktop-menu {
+  display: none;
+}
+
+.desktop-buttons {
+  display: none;
+  gap: 24px;
+}
+
+.mobile-menu-btn {
+  color: white;
+  font-size: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Show desktop menu on large screens */
+@media (min-width: 1024px) {
+  .desktop-menu {
+    display: flex;
+    align-items: center;
+  }
+  
+  .desktop-buttons {
+    display: flex;
+  }
+  
+  .mobile-menu-btn {
+    display: none;
+  }
+}
+
+.menu-list {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 24px;
+  align-items: center;
+}
+
+.menu-list a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+
+.menu-list a:hover {
+  color: #fed7aa;
+}
+
+.menu-select {
+  background: transparent;
+  color: white;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.menu-select option {
+  color: black;
+}
+
+/* Mobile menu */
+.mobile-menu {
+  background: linear-gradient(to right, #f97316, #ec4899);
+  border-top: 2px solid white;
+  padding: 16px;
+}
+
+.mobile-menu-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.mobile-nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.mobile-nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: all 0.3s;
+}
+
+.mobile-nav-links a:hover {
+  background: white;
+  color: #f97316;
+}
+
+.mobile-select {
+  width: 100%;
+  background: white;
+  color: #f97316;
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  font-weight: 600;
+}
+
+.mobile-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.mobile-buttons button {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid white;
+  border-radius: 50px;
+  background: transparent;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.mobile-buttons button:hover {
+  background: white;
+  color: #f97316;
+}
+
+/* Hero section */
+.hero-section {
+  padding-top: 70px;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #fff7ed, #fdf2f8, #fff7ed);
+  display: flex;
+  align-items: center;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.hero-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.hero-title {
+  font-size: 48px;
+  font-weight: 800;
+  color: #111827;
+  margin-bottom: 24px;
+  line-height: 1.2;
+}
+
+.gradient-text {
+  background: linear-gradient(to right, #f97316, #ec4899);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-description {
+  font-size: 20px;
+  color: #374151;
+  margin-bottom: 32px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 48px;
+}
+
+@media (min-width: 640px) {
+  .hero-buttons {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+.btn-primary {
+  padding: 16px 32px;
+  background: linear-gradient(to right, #f97316, #ec4899);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-secondary {
+  padding: 16px 32px;
+  background: transparent;
+  color: #f97316;
+  border: 2px solid #f97316;
+  border-radius: 12px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-secondary:hover {
+  background: linear-gradient(to right, #f97316, #ec4899);
+  color: white;
+  border-color: transparent;
+}
+
+/* Utility classes */
+.hidden { display: none; }
+.flex { display: flex; }
+.items-center { align-items: center; }
+.justify-between { justify-content: space-between; }
+.gap-2 { gap: 8px; }
+.text-white { color: white; }
+.font-bold { font-weight: bold; }
+
+/* Large screen utilities */
+@media (min-width: 1024px) {
+  .lg\\:flex { display: flex; }
+  .lg\\:hidden { display: none; }
+}
