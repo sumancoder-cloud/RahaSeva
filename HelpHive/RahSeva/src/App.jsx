@@ -1,4 +1,6 @@
 import { Routes, Route, Navigate } from "react-router-dom";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import LandingPage from "./pages/LandingPage";
 import Navbar from './components/Navbar.jsx';
 import { useAuth } from "./context/AuthContext";
@@ -13,6 +15,7 @@ import HelperSignUpForm from './pages/HelperSignUpForm.jsx'; // New import
 import UserWelcomePage from "./pages/UserWelcomePage";
 import HelperWelcomePage from "./pages/HelperWelcomePage";
 import AdminWelcomePage from "./pages/AdminWelcomePage";
+import OtpVerifyModel from "./pages/otpVerifyPage";
 
 // PrivateRoute component to protect routes for authenticated users
 const PrivateRoute = ({ children }) => {
@@ -47,6 +50,19 @@ function App() {
 
     return (
         <>
+          <ToastContainer 
+            position="top-right"
+            autoClose={3000}
+            hideProgressBar={false}
+            newestOnTop={true}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="light"
+            style={{ zIndex: 99999 }}
+          />
           <Navbar />
           <div className="pt-[90px]">
             <Routes>
@@ -88,7 +104,7 @@ function App() {
             <Route path="/welcome/user" element={<PrivateRoute><RoleRoute roles={['user', 'helper', 'admin']}><UserWelcomePage /></RoleRoute></PrivateRoute>} />
             <Route path="/welcome/helper" element={<PrivateRoute><RoleRoute roles={['helper', 'admin']}><HelperWelcomePage /></RoleRoute></PrivateRoute>} />
             <Route path="/welcome/admin" element={<PrivateRoute><RoleRoute roles={['admin']}><AdminWelcomePage /></RoleRoute></PrivateRoute>} />
-
+            
             {/* Account Routes */}
             <Route path="/account" element={<PrivateRoute><AccountLayout /></PrivateRoute>}>
               <Route index element={<AccountProfile />} />
@@ -97,7 +113,10 @@ function App() {
             </Route>
             
             <Route path="*" element={<Navigate to="/" replace />} />
+            <Route path="/verifyOtp" element={<OtpVerifyModel isOpen ={true} onClose={()=>{}} onVerify={()=>console.log(otp)}/>} 
+              />
             </Routes>
+
           </div>
         </>
     );

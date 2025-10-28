@@ -3,7 +3,8 @@ import {
   getNearbyProviders, 
   getServiceTypes, 
   getProviderDetails,
-  createMockProviders 
+  createMockProviders,
+  registerProvider
 } from '../controllers/serviceController.js';
 import auth from '../middleware/auth.js';
 
@@ -23,6 +24,11 @@ router.get('/providers', auth, getNearbyProviders);
 // @desc    Get provider details by ID
 // @access  Private
 router.get('/provider/:providerId', auth, getProviderDetails);
+
+// @route   POST /api/services/providers/register
+// @desc    Register a new service provider
+// @access  Private
+router.post('/providers/register', auth, registerProvider);
 
 // @route   POST /api/services/mock-providers
 // @desc    Create mock providers for testing (DEV ONLY)

@@ -79,6 +79,7 @@ export const getNearbyProviders = async (req, res) => {
       // Generate different mock providers based on service type
       const serviceProviders = {
         plumber: [
+          { name: 'Suman Plumbing Services', exp: 8, price: 300, rating: 4.8, verified: true, phone: '7997596790', address: 'Main Road, Kadapa, Andhra Pradesh' },
           { name: 'Ravi Kumar Plumbing', exp: 8, price: 299, rating: 4.8, verified: true },
           { name: 'Singh Pipe Services', exp: 6, price: 250, rating: 4.6, verified: true },
           { name: 'Quick Fix Plumbers', exp: 5, price: 200, rating: 4.4, verified: false },
@@ -130,8 +131,8 @@ export const getNearbyProviders = async (req, res) => {
           experience: provider.exp,
           pricePerHour: provider.price,
           rating: provider.rating,
-          phone: `+91 ${9800000000 + Math.floor(Math.random() * 100000000)}`,
-          address: generateAddress(lat + latOffset, lng + lngOffset),
+          phone: provider.phone || `+91 ${9800000000 + Math.floor(Math.random() * 100000000)}`,
+          address: provider.address || generateAddress(lat + latOffset, lng + lngOffset),
           isVerified: provider.verified,
           distance: Math.round(distance * 10) / 10,
           lat: lat + latOffset,
@@ -398,5 +399,118 @@ export const createMockProviders = async (req, res) => {
   } catch (err) {
     console.error('Create mock providers error:', err.message);
     res.status(500).json({ msg: 'Server error' });
+  }
+};
+
+// Register a new service provider
+export const registerProvider = async (req, res) => {
+  try {
+    const {
+      businessName,
+      serviceType,
+      description,
+      phone,
+      email,
+      address,
+      basePrice,
+      hourlyRate,
+      experience,
+      videoConsultation,
+      location,
+      userId
+    } = req.body;
+
+    // Validate required fields
+    if (!businessName || !serviceType || !description || !phone || !email || !address || !basePrice || !location) {
+      return res.status(400).json({ msg: 'All required fields must be provided' });
+    }
+
+    // Check if user already has a provider profile
+    const existingProvider = await ServiceProvider.findOne({ user: userId || req.user.id });
+    if (existingProvider) {
+      return res.status(400).json({ msg: 'You already have a provider profile registered' });
+    }
+
+    // Create new service provider
+    const newProvider = new ServiceProvider({
+      businessName,
+      serviceType,
+      description,
+      pricing: {
+        basePrice: parseInt(basePrice),
+        hourlyRate: hourlyRate ? parseInt(hourlyRate) : null,
+        unit: 'hour'
+      },
+      location: {
+        address,
+        coordinates: {
+          type: 'Point',
+          coordinates: [parseFloat(location.lng), parseFloat(location.lat)]
+        }
+      },
+      rating: {
+        average: 0,
+        totalReviews: 0
+      },
+      verification: {
+        isVerified: false, // Requires admin approval
+        kycCompleted: false,
+        submittedAt: new Date()
+      },
+      experience: {
+        years: parseInt(experience) || 0,
+        specializations: []
+      },
+      contact: {
+        phone,
+        email
+      },
+      availability: {
+        days: ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'],
+        hours: { start: '09:00', end: '18:00' }
+      },
+      services: {
+        videoConsultation: videoConsultation || false,
+        inPersonVisit: true,
+        emergencyService: false
+      },
+      stats: {
+        totalBookings: 0,
+        completedBookings: 0,
+        cancelledBookings: 0,
+        totalEarnings: 0
+      },
+      gallery: [],
+      user: userId || req.user.id
+    });
+
+    await newProvider.save();
+
+    // Update user role to helper if not already
+    await User.findByIdAndUpdate(
+      userId || req.user.id,
+      {
+        role: 'helper',
+        service: serviceType,
+        experience: parseInt(experience) || 0,
+        pricePerHour: parseInt(basePrice),
+        isActive: true
+      }
+    );
+
+    res.json({
+      success: true,
+      message: 'Provider registration submitted successfully. Your profile will be reviewed and verified within 24 hours.',
+      provider: {
+        id: newProvider._id,
+        businessName: newProvider.businessName,
+        serviceType: newProvider.serviceType,
+        verification: newProvider.verification
+      }
+    });
+
+  } catch (err) {
+    console.error('Register provider error:', err.message);
+    res.status(500).json({ msg: 'Server error during registration' });
   }
 };

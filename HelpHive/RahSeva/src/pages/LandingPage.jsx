@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import logoImage from "../assets/Untitled design_20251027_210608_0000.png";
 
 function LandingPage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -25,7 +26,7 @@ function LandingPage() {
               alt="RahaSeva Logo" 
               className="w-40 h-12 object-contain rounded-xl shadow-lg border-2 border-white/30 bg-white/10 backdrop-blur-sm"
             />
-            <span className="font-bold text-2xl text-white tracking-wide drop-shadow-lg">RahaSeva</span>
+            <span className="font-bold text-2xl text-white tracking-wide drop-shadow-lg"></span>
           </div>
 
           {/* Desktop Menu */}
@@ -179,13 +180,60 @@ function LandingPage() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-12">
                 <Link to="/signup">
-                <button className="px-8 py-4 bg-gradient-to-r from-orange-500 to-pink-500 text-white rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 font-semibold text-lg">
+                <button className="px-8 py-4 bg-gradient-to-r from-orange-500 to-pink-500 text-white rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 font-semibold text-lg flex items-center gap-2">
+                  <i className="fas fa-user-plus"></i>
                   Join Now
                 </button>
                 </Link>
-                <button className="px-8 py-4 border-2 border-orange-500 text-orange-500 rounded-xl hover:bg-gradient-to-r hover:from-orange-500 hover:to-pink-500 hover:text-white transition-all duration-300 font-semibold text-lg">
+                <Link to="/helper-signup">
+                <button className="px-8 py-4 border-2 border-orange-500 text-orange-500 rounded-xl hover:bg-gradient-to-r hover:from-orange-500 hover:to-pink-500 hover:text-white transition-all duration-300 font-semibold text-lg flex items-center gap-2">
+                  <i className="fas fa-hands-helping"></i>
+                  Offer Help
+                </button>
+                </Link>
+                <button className="px-8 py-4 border-2 border-orange-500 text-orange-500 rounded-xl hover:bg-gradient-to-r hover:from-orange-500 hover:to-pink-500 hover:text-white transition-all duration-300 font-semibold text-lg flex items-center gap-2">
+                  <i className="fas fa-play-circle"></i>
                   Watch Demo
                 </button>
+              </div>
+
+              {/* Join as Provider Button - Prominent at Landing Page */}
+              <div className="mb-12">
+                <Link to="/helper-signup">
+                <button className="inline-flex items-center px-8 py-4 text-white rounded-2xl shadow-2xl hover:shadow-3xl hover:scale-110 transition-all duration-300 font-bold text-lg border-4"
+                        style={{
+                          backgroundColor: '#FC6C0DFF',
+                          borderColor: '#166534',
+                          textShadow: '2px 2px 4px rgba(0,0,0,0.3)',
+                          opacity: 1,
+                          zIndex: 10
+                        }}>
+                  <i className="fas fa-user-plus mr-3 text-2xl"></i>
+                  <span>Join as Service Provider</span>
+                  <i className="fas fa-arrow-right ml-3 text-xl"></i>
+                </button>
+                </Link>
+                <p className="text-sm text-gray-600 mt-3 font-medium">Register your professional services and start helping others in your community</p>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-12">
+                <div className="bg-white p-6 rounded-xl shadow-md border-2 border-orange-200">
+                  <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-center gap-2">
+                    <i className="fas fa-search text-orange-500"></i>
+                    Need Help?
+                  </h3>
+                  <p className="text-gray-600">
+                    Find trusted helpers in your community for any task or assistance you need. Get matched with skilled volunteers ready to help.
+                  </p>
+                </div>
+                <div className="bg-white p-6 rounded-xl shadow-md border-2 border-pink-200">
+                  <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-center gap-2">
+                    <i className="fas fa-heart text-pink-500"></i>
+                    Offer Help
+                  </h3>
+                  <p className="text-gray-600">
+                    Make a difference by sharing your time and skills. Help others in your community and earn recognition for your contributions.
+                  </p>
+                </div>
               </div>
               <div className="flex items-center justify-center lg:justify-start space-x-8">
                 <div className="text-center bg-white p-4 rounded-xl shadow-md">
@@ -202,39 +250,19 @@ function LandingPage() {
                 </div>
               </div>
             </div>
-            <div className="relative">
-              <div className="relative z-10 bg-white rounded-2xl shadow-2xl p-8 border-2 border-orange-200">
-                <div className="space-y-6">
-                  <div className="flex items-center space-x-4">
-                    <div className="w-16 h-16 bg-gradient-to-r from-orange-500 to-pink-500 rounded-full flex items-center justify-center">
-                      <i className="fas fa-heart text-white text-xl"></i>
-                    </div>
-                    <div>
-                      <h3 className="font-bold text-gray-900 text-lg">Find Help</h3>
-                      <p className="text-gray-600">Connect with helpers nearby</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center space-x-4">
-                    <div className="w-16 h-16 bg-gradient-to-r from-pink-500 to-orange-500 rounded-full flex items-center justify-center">
-                      <i className="fas fa-hands-helping text-white text-xl"></i>                    </div>
-                    <div>
-                      <h3 className="font-bold text-gray-900 text-lg">Offer Help</h3>
-                      <p className="text-gray-600">Share your skills and time</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center space-x-4">
-                    <div className="w-16 h-16 bg-gradient-to-r from-orange-500 to-pink-500 rounded-full flex items-center justify-center">
-                      <i className="fas fa-shield-alt text-white text-xl"></i>
-                    </div>
-                    <div>
-                      <h3 className="font-bold text-gray-900 text-lg">Build Trust</h3>
-                      <p className="text-gray-600">Verified profiles and reviews</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            {/* Logo Image */}
+            <div className="hidden lg:flex justify-center items-center">
+              <img
+                src={logoImage}
+                alt="RahaSeva Logo"
+                className="w-80 h-80 object-contain drop-shadow-2xl animate-spin"
+                style={{
+                  animationDuration: '8s'
+                }}
+              />
             </div>
           </div>
+
         </div>
       </section>
 
@@ -261,8 +289,8 @@ function LandingPage() {
               </p>
             </div>
 
-            <div className="bg-gradient-to-br from-pink-50 to-pink-100 p-8 rounded-2xl border-2 border-pink-200 hover:shadow-lg transition-all duration-300 hover:scale-105">
-              <div className="w-16 h-16 bg-gradient-to-r from-pink-500 to-orange-500 rounded-2xl flex items-center justify-center mb-6">
+            <div className="bg-gradient-to-br from-orange-50 to-orange-100 p-8 rounded-2xl border-2 border-orange-200 hover:shadow-lg transition-all duration-300 hover:scale-105">
+              <div className="w-16 h-16 bg-gradient-to-r from-orange-500 to-pink-500 rounded-2xl flex items-center justify-center mb-6">
                 <i className="fas fa-graduation-cap text-white text-2xl"></i>
               </div>
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Tutor</h3>
@@ -281,8 +309,8 @@ function LandingPage() {
               </p>
             </div>
 
-            <div className="bg-gradient-to-br from-pink-50 to-pink-100 p-8 rounded-2xl border-2 border-pink-200 hover:shadow-lg transition-all duration-300 hover:scale-105">
-              <div className="w-16 h-16 bg-gradient-to-r from-pink-500 to-orange-500 rounded-2xl flex items-center justify-center mb-6">
+            <div className="bg-gradient-to-br from-orange-50 to-orange-100 p-8 rounded-2xl border-2 border-orange-200 hover:shadow-lg transition-all duration-300 hover:scale-105">
+              <div className="w-16 h-16 bg-gradient-to-r from-orange-500 to-pink-500 rounded-2xl flex items-center justify-center mb-6">
                 <i className="fas fa-cog text-white text-2xl"></i>
               </div>
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Mechanic</h3>
@@ -301,8 +329,8 @@ function LandingPage() {
               </p>
             </div>
 
-            <div className="bg-gradient-to-br from-pink-50 to-pink-100 p-8 rounded-2xl border-2 border-pink-200 hover:shadow-lg transition-all duration-300 hover:scale-105">
-              <div className="w-16 h-16 bg-gradient-to-r from-pink-500 to-orange-500 rounded-2xl flex items-center justify-center mb-6">
+            <div className="bg-gradient-to-br from-orange-50 to-orange-100 p-8 rounded-2xl border-2 border-orange-200 hover:shadow-lg transition-all duration-300 hover:scale-105">
+              <div className="w-16 h-16 bg-gradient-to-r from-orange-500 to-pink-500 rounded-2xl flex items-center justify-center mb-6">
                 <i className="fas fa-plus text-white text-2xl"></i>
               </div>
               <h3 className="text-2xl font-bold text-gray-900 mb-4">More Services</h3>
@@ -337,8 +365,8 @@ function LandingPage() {
               </p>
             </div>
 
-            <div className="text-center bg-white p-8 rounded-2xl shadow-lg border-2 border-pink-200">
-              <div className="w-20 h-20 bg-gradient-to-r from-pink-500 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-6">
+            <div className="text-center bg-white p-8 rounded-2xl shadow-lg border-2 border-orange-200">
+              <div className="w-20 h-20 bg-gradient-to-r from-orange-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-6">
                 <span className="text-2xl font-bold text-white">2</span>
               </div>
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Connect</h3>
@@ -373,7 +401,7 @@ function LandingPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="text-center bg-gradient-to-br from-orange-50 to-orange-100 p-6 rounded-2xl border-2 border-orange-200">
+            <div className="text-center bg-gradient-to-br from-orange-50 to-orange-100 p-6 rounded-2xl border-2 border-orange-200 hover:shadow-lg transition-all duration-300 hover:scale-105">
               <div className="w-16 h-16 bg-gradient-to-r from-orange-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4">
                 <i className="fas fa-search text-white text-xl"></i>
               </div>
@@ -381,15 +409,15 @@ function LandingPage() {
               <p className="text-gray-600 text-sm">AI-powered system for perfect connections</p>
             </div>
 
-            <div className="text-center bg-gradient-to-br from-orange-50 to-orange-100 p-6 rounded-2xl border-2 border-pink-200">
-              <div className="w-16 h-16 bg-gradient-to-r from-orange-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                <i className="fas fa-shield-check text-black text-xl"></i>
+            <div className="text-center bg-gradient-to-br from-orange-50 to-orange-100 p-6 rounded-2xl border-2 border-orange-200 hover:shadow-lg transition-all duration-300 hover:scale-105">
+              <div className="w-16 h-16 bg-gradient-to-r from-orange-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+                <i className="fas fa-check-circle text-white text-2xl drop-shadow-lg"></i>
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-2">Verified Profiles</h3>
               <p className="text-gray-600 text-sm">All helpers are verified for safety</p>
             </div>
 
-            <div className="text-center bg-gradient-to-br from-orange-50 to-orange-100 p-6 rounded-2xl border-2 border-orange-200">
+            <div className="text-center bg-gradient-to-br from-orange-50 to-orange-100 p-6 rounded-2xl border-2 border-orange-200 hover:shadow-lg transition-all duration-300 hover:scale-105">
               <div className="w-16 h-16 bg-gradient-to-r from-orange-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4">
                 <i className="fas fa-clock text-white text-xl"></i>
               </div>
@@ -397,8 +425,8 @@ function LandingPage() {
               <p className="text-gray-600 text-sm">Round the clock customer support</p>
             </div>
 
-            <div className="text-center bg-gradient-to-br from-pink-50 to-pink-100 p-6 rounded-2xl border-2 border-pink-200">
-              <div className="w-16 h-16 bg-gradient-to-r from-pink-500 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-4">
+            <div className="text-center bg-gradient-to-br from-orange-50 to-orange-100 p-6 rounded-2xl border-2 border-orange-200 hover:shadow-lg transition-all duration-300 hover:scale-105">
+              <div className="w-16 h-16 bg-gradient-to-r from-orange-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4">
                 <i className="fas fa-dollar-sign text-white text-xl"></i>
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-2">Fair Pricing</h3>
@@ -421,12 +449,12 @@ function LandingPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white p-8 rounded-2xl shadow-lg border-2 border-orange-200">
+            <div className="bg-white p-8 rounded-2xl shadow-lg border-2 border-orange-200 hover:shadow-xl transition-all duration-300 hover:scale-105">
               <div className="flex items-center mb-4">
-                <div className="w-12 h-12 bg-gradient-to-r from-orange-500 to-pink-500 rounded-full flex items-center justify-center text-white font-bold">
-                  S
+                <div className="w-12 h-12 bg-gradient-to-r from-orange-500 to-pink-500 rounded-full flex items-center justify-center text-white font-bold mr-3">
+                  <i className="fas fa-heart text-white text-lg"></i>
                 </div>
-                <div className="ml-4">
+                <div>
                   <h4 className="font-bold text-gray-900">Sarah Johnson</h4>
                   <p className="text-gray-600 text-sm">New Mom</p>
                 </div>
@@ -440,12 +468,12 @@ function LandingPage() {
               </div>
             </div>
 
-            <div className="bg-white p-8 rounded-2xl shadow-lg border-2 border-pink-200">
+            <div className="bg-white p-8 rounded-2xl shadow-lg border-2 border-orange-200 hover:shadow-xl transition-all duration-300 hover:scale-105">
               <div className="flex items-center mb-4">
-                <div className="w-12 h-12 bg-gradient-to-r from-pink-500 to-orange-500 rounded-full flex items-center justify-center text-white font-bold">
-                  M
+                <div className="w-12 h-12 bg-gradient-to-r from-pink-500 to-orange-500 rounded-full flex items-center justify-center text-white font-bold mr-3">
+                  <i className="fas fa-handshake text-white text-lg"></i>
                 </div>
-                <div className="ml-4">
+                <div>
                   <h4 className="font-bold text-gray-900">Mike Chen</h4>
                   <p className="text-gray-600 text-sm">College Student</p>
                 </div>
@@ -459,12 +487,12 @@ function LandingPage() {
               </div>
             </div>
 
-            <div className="bg-white p-8 rounded-2xl shadow-lg border-2 border-orange-200">
+            <div className="bg-white p-8 rounded-2xl shadow-lg border-2 border-orange-200 hover:shadow-xl transition-all duration-300 hover:scale-105">
               <div className="flex items-center mb-4">
-                <div className="w-12 h-12 bg-gradient-to-r from-orange-500 to-pink-500 rounded-full flex items-center justify-center text-white font-bold">
-                  E
+                <div className="w-12 h-12 bg-gradient-to-r from-orange-500 to-pink-500 rounded-full flex items-center justify-center text-white font-bold mr-3">
+                  <i className="fas fa-shield-alt text-white text-lg"></i>
                 </div>
-                <div className="ml-4">
+                <div>
                   <h4 className="font-bold text-gray-900">Emily Rodriguez</h4>
                   <p className="text-gray-600 text-sm">Senior Citizen</p>
                 </div>
@@ -492,11 +520,13 @@ function LandingPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link to="/helper-signup">
-            <button className="px-8 py-4 bg-white text-orange-500 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 font-semibold text-lg">
+            <button className="px-8 py-4 bg-white text-orange-500 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 font-semibold text-lg flex items-center gap-2">
+              <i className="fas fa-hands-helping"></i>
               Join as Helper
             </button>
             </Link>
-            <button className="px-8 py-4 border-2 border-white text-white rounded-xl hover:bg-white hover:text-pink-500 transition-all duration-300 font-semibold text-lg">
+            <button className="px-8 py-4 border-2 border-white text-white rounded-xl hover:bg-white hover:text-pink-500 transition-all duration-300 font-semibold text-lg flex items-center gap-2">
+              <i className="fas fa-search"></i>
               Find Help Now
             </button>
           </div>
